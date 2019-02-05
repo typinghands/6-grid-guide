@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster:regular"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bree+Serif"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Flexbox - Made Easy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="flexbox-grid.css"
+    />
+  </head>
+
+  <body>
+    <div id="div-margin">
+      <h1 id="title top">The Basics of Flexbox</h1>
+
+      <p>
+        Place things around the page is essential in making a site, and doing it
+        manually can be a bit of a pain. Let's learn how to customize the
+        position of elements in your page in a more flexible and modern way.
+        <br />
+        After reading this guide you should have a good enough understanding of
+        Flexbox and its features to use it on your own project.
+      </p>
+
+      <hr />
+
+      <div class="flexCenter">
+        <h2>Table of Contents:</h2>
+
+        <ul>
+          <li><a href="#uno">What is it?</a></li>
+          <li><a href="#due">How to use it?</a></li>
+          <li><a href="#tre">How can we customize the flex container?</a></li>
+          <li>
+            <a href="#quattro"
+              >How can we make small adjustments to the content?</a
+            >
+          </li>
+          <li><a href="#cinque">Recap and Default Settings for flexbox</a></li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <h2 id="uno"><li>What is it?</li></h2>
+      <p>
+        Flexbox or "Flexible Box Module" is a css tool used to align many items
+        easily along one direction. It is basically a somewhat automatic layout
+        that will place the various elements along the page in a responsive way
+        according to the width of the user screen. <br />
+        The main drawback? The fact that it is somewhat better suited to arrange
+        items along only one direction, so if your site will have lots of
+        vertical AND horizontal movement flexbox will not shine. For that Grid
+        is more appropriate, or a mix of the two.
+      </p>
+
+      <hr />
+
+      <h2 id="due"><li>How to use it?</li></h2>
+
+      <p>
+        Let's start with the basics: you'll want to create a class and to
+        activate flexbox in it.
+      </p>
+
+      <div class="code">
+        <p>
+          .flexbox { display: flex; <br />
+          flex-direction: column; }
+        </p>
+      </div>
+
+      <p>
+        In that example "display:flex" is the command that you need to enable
+        flex. The second thing you need to do is to choose a direction for the
+        elements to flow towards. <br />
+        As we said the flexbox shines to align things over one direction only:
+        here is where you choose which direction that is! <br />
+        By default it is actually already row, so you would usually write this
+        only if you wanted to specify something different.
+      </p>
+      <p>
+        There are 4 directions that you can choose from: row and column are the
+        basics. And then there are "row-reverse" and "column-reverse" which are
+        basically the exact same direction, but instead of ordering the elements
+        as 1-2-3 they'd do 3-2-1.
+      </p>
+
+      <p><br /></p>
+      <h4>flex-direction: row</h4>
+
+      <div class="flexbox flex-justify-space flex-nosquish">
+        <div class="flexbox">
+          <div class="box1">Box 1</div>
+
+          <div class="box2">Box 2</div>
+
+          <div class="box3">Box 3</div>
+        </div>
+
+        <p></p>
+
+        <div class="flexbox flex-row-reverse flex-nosquish">
+          <div class="box1">Box 1</div>
+
+          <div class="box2">Box 2</div>
+
+          <div class="box3">Box 3</div>
+        </div>
+      </div>
+
+      <p><br /></p>
+
+      <h4>'flex-direction: column' and 'flex-direction: column-reverse'</h4>
+
+      <div class="flexbox flex-justify-space">
+        <div class="flexbox flex-column">
+          <div class="box1">Box 1</div>
+
+          <div class="box2">Box 2</div>
+
+          <div class="box3">Box 3</div>
+        </div>
+
+        <p></p>
+        <div class="flexbox flex-column-reverse">
+          <div class="box1">Box 1</div>
+
+          <div class="box2">Box 2</div>
+
+          <div class="box3">Box 3</div>
+        </div>
+      </div>
+
+      <div class="code">
+        <p>
+          &lt;div class="flexbox flex-row-reverse"&gt; <br />
+          &lt;div class="box1"&gt; <br />
+          Box 1 <br />
+          &lt;/div&gt; <br />
+          &lt;div class="box2"&gt; <br />
+          Box 2 <br />
+          &lt;/div&gt; <br />
+          &lt;div class="box3"&gt; <br />
+          Box 3 <br />
+          &lt;/div&gt; <br />
+          &lt;/div&gt;
+        </p>
+      </div>
+
+      <p>
+        Basically we just wrapped a div with the flexbox enabled and here we go:
+        the page will now automatically try to arrange the items based on our
+        chosen direction. There is much more customization available of course,
+        so now we'll go through it.
+      </p>
+
+      <hr />
+
+      <h2 id="tre"><li>How can we customize the flex container?</li></h2>
+
+      <p>
+        Let's start with a situation where we might have many elements on one
+        row flex container. What would happen?
+      </p>
+
+      <div class="flexbox box-border">
+        <div class="box1">Blue Box 1</div>
+        <div class="box2">Green Box 1</div>
+        <div class="box3">Red Box 1</div>
+        <div class="box1">Blue Box 2</div>
+        <div class="box2">Green Box 2</div>
+        <div class="box3">Red Box 2</div>
+        <div class="box1">Blue Box 3</div>
+        <div class="box2">Green Box 3</div>
+        <div class="box3">Red Box 3</div>
+        <div class="box1">Blue Box 4</div>
+        <div class="box2">Green Box 4</div>
+        <div class="box3">Red Box 4</div>
+        <div class="box1">Blue Box 5</div>
+        <div class="box2">Green Box 5</div>
+        <div class="box3">Red Box 5</div>
+      </div>
+
+      <p>
+        They are all squished together! Same thing could happen if the flexbox
+        was a column. But what if would like these to go to the next line
+        automatically if they don't fit in one line?
+      </p>
+
+      <p>
+        Say hello to the flex property
+        <span class="bold">"flex-wrap:"</span> accepting the values
+        <span class="bold">"nowrap"</span> (the default one),
+        <span class="bold">"wrap"</span> and
+        <span class="bold">"wrap reverse"</span>.
+      </p>
+
+      <p></p>
+
+      <div class="flexbox flex-wrap box-border">
+        <div class="box1">Blue Box 1</div>
+        <div class="box2">Green Box 1</div>
+        <div class="box3">Red Box 1</div>
+        <div class="box1">Blue Box 2</div>
+        <div class="box2">Green Box 2</div>
+        <div class="box3">Red Box 2</div>
+        <div class="box1">Blue Box 3</div>
+        <div class="box2">Green Box 3</div>
+        <div class="box3">Red Box 3</div>
+        <div class="box1">Blue Box 4</div>
+        <div class="box2">Green Box 4</div>
+        <div class="box3">Red Box 4</div>
+        <div class="box1">Blue Box 5</div>
+        <div class="box2">Green Box 5</div>
+        <div class="box3">Red Box 5</div>
+      </div>
+
+      <p><br /></p>
+
+      <div class="flexbox flex-wrap-reverse box-border">
+        <div class="box1">Blue Box 1</div>
+        <div class="box2">Green Box 1</div>
+        <div class="box3">Red Box 1</div>
+        <div class="box1">Blue Box 2</div>
+        <div class="box2">Green Box 2</div>
+        <div class="box3">Red Box 2</div>
+        <div class="box1">Blue Box 3</div>
+        <div class="box2">Green Box 3</div>
+        <div class="box3">Red Box 3</div>
+        <div class="box1">Blue Box 4</div>
+        <div class="box2">Green Box 4</div>
+        <div class="box3">Red Box 4</div>
+        <div class="box1">Blue Box 5</div>
+        <div class="box2">Green Box 5</div>
+        <div class="box3">Red Box 5</div>
+      </div>
+      <p></p>
+
+      <p>
+        Nice! We were able to spread them over multiple lines although... they
+        did not spread very evenly. Let's look at how to improve on that, but
+        first a "pro-tip"!
+      </p>
+
+      <h3 class="div-h3">Pro-Tip: The "flex-flow" command</h3>
+
+      <p>
+        Changing things one by one is always good, but the two commands that we
+        have just learned are used so often together while working with flexbox,
+        that a new command merging them was created: "flex-flow".
+      </p>
+      <p>
+        Basically instead of using "flex-direction: column" and "flex-wrap:
+        wrap-reverse" for example, to have the same effect you can just write:
+      </p>
+
+      <div class="code"><p>flex-flow: column wrap-reverse;</p></div>
+
+      <hr />
+
+      <h3 class="div-h3">
+        Moving things along the flex direction: "justify-content".
+      </h3>
+
+      <p>
+        So you've made your flexbox container and chosen a direction were things
+        should go to. Great! Now what if you don't want all the things to just
+        stay squished at the top left corner of your container? You gotta set
+        their "justify-content" value! <br />
+        <br />
+        The important take away here is: if you want to arrange elements
+        <span class="bold">along your specified direction</span>, you should use
+        this. <br />
+        Let's see which options "justify" takes.
+      </p>
+
+      <p>
+        <em
+          >All these boxes have no padding or margin but have a small black
+          border, to better show the effect of flexbox on content. There also is
+          a transparent box around the elements to better show their placement
+          on the chosen direction.
+        </em>
+      </p>
+
+      <h4>justify-content: flex-start;</h4>
+      <div class="flexbox box-size" style="justify-content: flex-start;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>Squished to the top left!</p>
+
+      <h4>justify-content: flex-end;</h4>
+      <div class="flexbox box-size" style="justify-content: flex-end;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>Squished to the top right!</p>
+
+      <h4>justify-content: center;</h4>
+      <div class="flexbox box-size" style="justify-content: center;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>Squished in the middle!</p>
+
+      <h4>justify-content: space-between;</h4>
+      <div class="flexbox box-size" style="justify-content: space-between;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>
+        Dividing elements by giving each the max amount of distance available.
+      </p>
+
+      <h4>justify-content: space-around;</h4>
+      <div class="flexbox box-size" style="justify-content: space-around;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>
+        Dividing elements by cushioning them inside 2 equal spaces. There are
+        thus 2 spaces between each element and 1 space from the page's border.
+      </p>
+      <h4>justify-content: space-evenly;</h4>
+      <div class="flexbox box-size" style="justify-content: space-evenly;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+      </div>
+
+      <p>
+        The most even spacing: the elements are given equal distances, both
+        between themselves and the page's border.
+      </p>
+
+      <hr />
+
+      <h3 class="div-h3">
+        Moving things on the other direction "Part 1": "align-items".
+      </h3>
+
+      <p>
+        You have established a flex-direction (let's say row), but what you
+        don't know is that you have some degree of control also on the other
+        axis: the so called "cross axis" (in this case column).
+      </p>
+      <p>
+        Let's first look at the most visually noticeable one: "align-items" and
+        it's properties.
+      </p>
+
+      <h4>align-items: flex-start;</h4>
+      <div class="flexbox box-size" style="align-items: flex-start;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>
+        Pushing all the items at the top of the cross-axis. Here that means
+        above, on a row it would be left.
+      </p>
+
+      <h4>align-items: flex-end;</h4>
+      <div class="flexbox box-size" style="align-items: flex-end;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>Pushing all the items at the bottom of the cross-axis.</p>
+
+      <h4>align-items: center;</h4>
+      <div class="flexbox box-size" style="align-items: center;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>Placing all the items in the middle of the cross-axis.</p>
+
+      <h4>align-items: stretch;</h4>
+      <div class="flexbox box-size" style="align-items: stretch;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>
+        This is the default setting for a flexbox. Every element is stretched at
+        the size of the biggest element of the group.
+      </p>
+
+      <h4>align-items: baseline;</h4>
+      <div class="flexbox box-size" style="align-items: baseline;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>
+        Baseline aligns the content of each element, so that it will all align
+        itself over the same line. No matter the container size. To explain a
+        bit further, fonts sit on an invisible straight like called "baseline".
+        This option will ensure all the different elements will align on this
+        same line.
+      </p>
+
+      <hr />
+
+      <h3 class="div-h3">
+        Moving things on the other direction "Part 2": "align-content".
+      </h3>
+
+      <p>
+        There is a more subtle way to influence the elements along the cross
+        axis. You can basically choose the spacing between the elements on
+        multiple lines, with "align-content". It's important to know that this
+        setting would have no effect if your content is all on one line, so it's
+        useful only if paired to something like flex-wrap.
+      </p>
+
+      <h4>align-content: flex-start;</h4>
+
+      <div
+        class="flexbox box-size cage flex-wrap"
+        style="align-content:flex-start"
+      >
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>Squished towards the top of the container, no spaces.</p>
+
+      <h4>align-content: flex-end;</h4>
+
+      <div
+        class="flexbox box-size cage flex-wrap"
+        style="align-content:flex-end"
+      >
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>Squished towards the end of the container, no spaces.</p>
+
+      <h4>align-content: center;</h4>
+
+      <div class="flexbox box-size cage flex-wrap" style="align-content:center">
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>Squished towards the middle of the container, no spaces.</p>
+
+      <h4>align-content: stretch;</h4>
+
+      <div
+        class="flexbox box-size cage flex-wrap"
+        style="align-content:stretch"
+      >
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>
+        The default setting: no spaces, elements stretched on the cross-axis to
+        all have the same size.
+      </p>
+
+      <h4>align-content: space-between;</h4>
+
+      <div
+        class="flexbox box-size cage flex-wrap"
+        style="align-content:space-between"
+      >
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>
+        Now we see spaces. Max distance available between all elements, pushed
+        to the sides fully.
+      </p>
+
+      <h4>align-content: space-around;</h4>
+
+      <div
+        class="flexbox box-size cage flex-wrap"
+        style="align-content:space-around"
+      >
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+        <div class="box box-blue box-size">Boxing</div>
+        <div class="box box-green box-size">
+          This <br />
+          is taller.
+        </div>
+        <div class="box box-red box-size">A bit longer.</div>
+      </div>
+
+      <p>
+        Even spaces. Equal size paddings are given to both sides of any element,
+        meaning two elements have both their paddings between them.
+      </p>
+
+      <hr />
+
+      <h2 id="quattro">
+        <li>How can we make small adjustments to the content?</li>
+      </h2>
+
+      <p>
+        We can use options to modify the content of the flexbox containers
+        individually!
+      </p>
+
+      <h3 class="div-h3">Going against the current: align-self</h3>
+
+      <p>
+        All the elements of a container can be aligned together with a nice
+        "align-items" to behave in a certain way along the cross-axis. <br />
+        But there is actually a way to target a specific element of the group
+        and to place only that element in a different alignment of your choice!
+        Meet <span class="bold">align-self</span>. Every parameter already used
+        in align-items is available, so here are two examples.
+      </p>
+
+      <h4>"align-self: flex-end;" on "align-items: center;"</h4>
+      <div class="flexbox box-size" style="align-items: center;">
+        <div class="box box-green box-size">Nice Box</div>
+        <div class="box box-blue box-size" style="align-self: flex-end;">
+          <span class="rebel">I'm a rebel!</span>
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here. <br />
+          And this time it's <br />
+          by far!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>
+        Placing all the items in the middle of the cross-axis, other than that
+        disobedient blue box which is going "flex-end".
+      </p>
+
+      <h4>"align-self: baseline;" on "align-items: stretch;"</h4>
+      <div class="flexbox box-size" style="align-items: stretch;">
+        <div class="box box-green box-size rebel" style="align-self:baseline">
+          You'll never catch me alive!
+        </div>
+        <div class="box box-blue box-size ">
+          This one box here is a bit longer
+        </div>
+        <div class="box box-red box-size">
+          How about me? <br />
+          Hello, <br />
+          I'm the tallest here. <br />
+          And this time it's <br />
+          by far!
+        </div>
+        <div class="baseline-box">padding:50px 0px 10px 20px;</div>
+      </div>
+
+      <p>
+        Every element is stretched at the size of the biggest element of the
+        group. But not the pesky green box which is "baseline". It's also
+        interesting to notice how a baseline without another element to
+        "baseline" with, doesn't really work and just looks like flex-start.
+      </p>
+      <hr />
+
+      <h3 class="div-h3">Choosing your own place: "order"</h3>
+
+      <p>
+        We are unlocking endless amounts of freedom already, but there is more.
+        What if I told you that you can even move items inside the same flex
+        direction! For this trick we will need a new volunteer: "order".
+      </p>
+      <p>
+        Every element in a flexbox group has a hidden rank, which chooses where
+        it is placed in the line. Every element by default has hidden rank of 0.
+        <br />
+        By using "order" we can specify a different rank: the smaller the number
+        the more to the left it will go (negative numbers are allowed). The
+        bigger the number, the more to the right.
+      </p>
+
+      <h4>"align-self: flex-end;" on "align-items: center;"</h4>
+      <div class="flexbox box-size" style="align-items: center;">
+        <div class="box box-green box-size" style="order:1;">
+          <sup> <u>Box#1 </u> </sup> <br />
+          <br />
+          order:1;
+        </div>
+        <div class="box box-blue box-size" style="order:3;">
+          <sup> <u>Box#2 </u> </sup> <br />
+          <br />
+          order:3;
+        </div>
+        <div class="box box-red box-size" style="order:-1;">
+          <sup> <u>Box#3 </u> </sup> <br />
+          <br />
+          order:-1;
+        </div>
+        <div class="box box-green box-size" style="order:2;">
+          <sup> <u>Box#4 </u> </sup> <br />
+          <br />
+          order:2;
+        </div>
+        <div class="box box-blue box-size" style="order:0;">
+          <sup> <u>Box#5 </u> </sup> <br />
+          <br />
+          order:0;
+        </div>
+        <div class="box box-red box-size" style="order: -2;">
+          <sup> <u>Box#6 </u> </sup> <br />
+          <br />
+          order:-2;
+        </div>
+      </div>
+
+      <hr />
+
+      <h3 class="div-h3">Growing and shrinking Elements: "flex: ;"</h3>
+
+      <p>
+        This is the last fine tuning available on flexbox and it's perhaps more
+        complex than the other ones. <br />
+        At the core it's giving you the control over the shrinking and growing
+        of the elements in a flexbox. More specifically it's also giving you
+        control of how they change size <b>in proportion</b> to each other.
+        <br />
+        This is particularly useful to manage the otherwise empty space that
+        could be present in a group of elements.
+      </p>
+
+      <p>
+        The command that you will use for these options is
+        <strong>"flex: ;"</strong>. It's important to notice that "flex" is not
+        applied to a container of elements, but directly on the elements that we
+        wish to influence. <br />
+        Flex accepts two types of values:
+      </p>
+      <ol type="A">
+        <li><strong>One or multiple numbers.</strong></li>
+        <li>
+          <strong>One keyword</strong>, which will act as a shorthand for more
+          complex default settings.
+        </li>
+      </ol>
+
+      <p>
+        For situation (B) it's just a matter of memorizing what they do, and
+        it's actually the most comfortable way to use flex as these settings
+        cover most scenarios.
+      </p>
+      <p>
+        But let's delve deeper into case (A) so that we can understand exactly
+        what we are doing with this flex setting.
+      </p>
+
+      <p>A flex command in (A) will usually look something like this:</p>
+      <h3>flex: 0 1 auto;</h3>
+
+      <p>And what it's saying it's actually this:</p>
+
+      <ul>
+        <li>
+          The first number "0" is the <strong>"Grow" Value</strong>: As a 0 it's
+          disabled, and so this element will not be allowed to grow larger and
+          stretch to fill the empty space.
+        </li>
+        <li>
+          The second number "1" is the <strong>"Shrink" Value</strong>: With 1
+          it's enabled. This means that instead of overflowing out of the
+          container, this element will be allowed to shrink if necessary.
+        </li>
+        <li>
+          The third value "auto" is the <strong>"flex basis" Value</strong>:
+          this one basically sets the starting size for the element. Shrinking
+          and growing will start from this value to modify the size.
+        </li>
+      </ul>
+
+      <p>
+        "flex: 0 1 auto" are actually the default settings for any flexbox
+        container. If the elements are not specifically set to behave
+        differently, the whole group would behave as if they had flex: 0 1 auto
+        as parameters.
+      </p>
+      <p>
+        While shrink and grow only accept 0 (disabled) or 1 (enabled) as values,
+        the third value (flex-basis) is a bit more... flexible.
+      </p>
+
+      <h3>
+        About "flex-basis": setting the initial length of a flexible item.
+      </h3>
+
+      <p>Flex basis fundamentally can be three things:</p>
+
+      <ul>
+        <li>
+          <strong>"auto":</strong> the default and simple setting. This means
+          that the flex element will first look if there is any specified size
+          for itself already. Something like width: 200px or a height value. In
+          that case it will respect that size and move on. If the element
+          doesn't have a size instead, the "auto" will automatically use the
+          size of the element's content to fit the final dimensions.
+        </li>
+        <li>
+          <strong>"0":</strong> As 0 it's disabled, so there is no default size
+          to start from and the size of the item is fully dependent on the
+          shrink and grow settings. At flex: 0 0 0; you would have a fully
+          inflexible element.
+        </li>
+        <li>
+          <strong>"200px":</strong> or any specific dimension. In that case the
+          element would start from that specified dimension to grow or shrink.
+          In particular for a row flexbox this will set its width, while the
+          height will still stretch based on content size. For a column flexbox
+          it's the contrary, with basis setting the element's height.
+        </li>
+      </ul>
+
+      <p>
+        Let's see this commands in action to better understand them and at the
+        same time learn the short hands of Flex (B). <br />
+        In the next examples every element has been given directly the flex
+        attribute shown above.
+      </p>
+
+      <h4>
+        flex: initial; <br />
+        <em>Equal to flex: 0 1 auto;</em>
+      </h4>
+
+      <div class="flexbox box-border">
+        <div class="box box-blue box-border flex-initial blue-dimension">
+          Box with a height of 70px.
+        </div>
+        <div class="box box-green box-border flex-initial green-dimensions">
+          Box <br />300px high <br />
+          and mighty <br />King <br />
+          of boxes.
+        </div>
+        <div class="box box-red box-border flex-initial">Box</div>
+        <div class="box box-purple box-border flex-initial">
+          padding: 50px 0px 10px 20px;
+        </div>
+        <div class="box box-black box-dimension box-border flex-initial">
+          This situation is adequate to the status of a box such as mine. I
+          demand 300px of width!
+        </div>
+        <div class="box box-orange box-dimension2 box-border flex-initial">
+          height:100px; <br />
+          width: 150px;
+        </div>
+      </div>
+
+      <p>
+        Every flexbox container would behave like this by default, and so do all
+        the examples above in the page. Here the elements are not allowed to
+        grow to fill the empty space, but they are allowed to shrink so that
+        they won't overflow out of the container. The basis answers to the
+        specified size first, and to the content inside after.
+      </p>
+      <p>
+        Let's see more precisely what happens when a box can't grow, but can
+        shrink.
+      </p>
+
+      <div class="flexbox box-border" style="width: 300px; height: 100px;">
+        <div class="box box-red box-border flex-initial" style="width: 200px;">
+          Box width: 200px, <br />
+          container width: 300px;
+        </div>
+      </div>
+
+      <p></p>
+
+      <div class="flexbox box-border" style="width: 150px; height: 100px;">
+        <div
+          class="box box-orange box-border flex-initial"
+          style="width: 200px;"
+        >
+          Box width: 200px, <br />
+          container width: 150px;
+        </div>
+      </div>
+
+      <p>
+        With Growth: 0 and Shrink: 1, the 200px wide box never stretched to fill
+        the whole initial container. It did instead shrink inside the tinier
+        container to avoid overflowing.
+      </p>
+
+      <hr />
+
+      <h4>
+        flex: none; <br />
+        <em>Equal to flex: 0 0 auto;</em>
+      </h4>
+
+      <div class="flexbox box-border">
+        <div class="box box-blue box-border flex-none blue-dimension">
+          Box with a height of 70px.
+        </div>
+        <div class="box box-green box-border flex-none green-dimensions">
+          Box <br />300px high <br />
+          and mighty <br />King <br />
+          of boxes.
+        </div>
+        <div class="box box-red box-border flex-none">Box</div>
+        <div class="box box-purple box-border flex-none">
+          padding: 50px 0px 10px 20px;
+        </div>
+        <div class="box box-black box-dimension box-border flex-none">
+          This situation is adequate to the status of a box such as mine. I
+          demand 300px of width! I hope your screen is sufficiently large
+          though.
+        </div>
+        <div class="box box-orange box-dimension2 box-border flex-none">
+          height:100px; <br />
+          width: 150px;
+        </div>
+      </div>
+
+      <p>
+        This setting does not allow elements to grow, but neither to shrink.
+        It's particularly noticeable by playing with the size of the browser
+        that this setting is different from "initial". If the screen is too
+        narrow, the elements will actually break free from the container. <br />
+        Interesting to notice that while the items will overflow on the main
+        flex-direction, the container will still just stretch itself to fit even
+        the tallest of elements, and not overflow on the cross-axis.
+      </p>
+
+      <p>
+        Let's see more precisely what happens when a box can't grow and can't
+        shrink either.
+      </p>
+
+      <div class="flexbox box-border" style="width: 300px; height: 100px;">
+        <div class="box box-red box-border flex-none" style="width: 200px;">
+          Box width: 200px, <br />
+          container width: 300px;
+        </div>
+      </div>
+
+      <p></p>
+
+      <div class="flexbox box-border" style="width: 150px; height: 100px;">
+        <div class="box box-orange box-border flex-none" style="width: 200px;">
+          Box width: 200px, <br />
+          container width: 150px;
+        </div>
+      </div>
+
+      <p>
+        With Growth: 0 and Shrink: 0, the 200px wide box never stretched to fill
+        the whole initial container. Unable to shrink itself, it overflowed
+        outside the container size.
+      </p>
+
+      <hr />
+
+      <h4>
+        flex: auto; <br />
+        <em>Equal to flex: 1 1 auto;</em>
+      </h4>
+
+      <div class="flexbox box-border">
+        <div class="box box-blue box-border flex-auto blue-dimension">
+          Box with a height of 70px.
+        </div>
+        <div class="box box-green box-border flex-auto green-dimensions">
+          Box <br />300px high <br />
+          and mighty <br />King <br />
+          of boxes.
+        </div>
+        <div class="box box-red box-border flex-auto">Box</div>
+        <div class="box box-purple box-border flex-auto">
+          padding: 50px 0px 10px 20px;
+        </div>
+        <div class="box box-black box-dimension box-border flex-auto">
+          This situation is more than adequate to the status of a box such as
+          mine. I only demanded 300px of width, but I got even more!
+        </div>
+        <div class="box box-orange box-dimension2 box-border flex-auto">
+          height:100px; <br />
+          width: 150px;
+        </div>
+      </div>
+
+      <p>
+        The most responsive of settings. Here the boxes are free to fill the
+        empty space, shrink if necessary and will respond to size and content.
+      </p>
+
+      <p>How about what happens when a box can grow and can also shrink?</p>
+
+      <div class="flexbox box-border" style="width: 300px; height: 100px;">
+        <div class="box box-red box-border flex-auto" style="width: 200px;">
+          Box width: 200px, <br />
+          container width: 300px;
+        </div>
+      </div>
+
+      <p></p>
+
+      <div class="flexbox box-border" style="width: 150px; height: 100px;">
+        <div class="box box-orange box-border flex-auto" style="width: 200px;">
+          Box width: 200px, <br />
+          container width: 150px;
+        </div>
+      </div>
+
+      <p>
+        With Growth: 1 and Shrink: 1, the 200px wide box stretched to fill the
+        whole initial container! It did also shrink inside the tinier container
+        to avoid overflowing. Be like water my friend.
+      </p>
+
+      <hr />
+
+      <h4>
+        <span style="color: white;">
+          <span class="box-blue">flex: 2;</span>
+          <span class="box-green">flex:4;</span>
+          <span class="box-red">flex:8;</span>
+          <span style="background-color: purple;">flex: 4;</span>
+          <span class="box-black">flex: 2;</span>
+          <span class="box-orange">flex: initial;</span>
+        </span>
+        <br />
+        <em
+          >Equal to: flex-basis set to 0, the items occupy space in proportion
+          to their flex number.</em
+        >
+      </h4>
+
+      <div class="flexbox box-border">
+        <div class="box box-blue box-border flex-2 blue-dimension">
+          Box with a height of 70px.
+        </div>
+        <div class="box box-green box-border flex-4 green-dimensions">
+          Box <br />
+          300px high <br />
+          and mighty <br />King <br />
+          of boxes.
+        </div>
+        <div class="box box-red box-border flex-8">Box</div>
+        <div class="box box-purple box-border flex-4">
+          padding: 50px 0px 10px 20px;
+        </div>
+        <div class="box box-black box-dimension box-border flex-2">
+          This situation is completely unfitting to the status of a box such as
+          mine. I demand 300px of width! I would kindly ask you to call your
+          supervisor so that we may solve this issue promptly.
+        </div>
+        <div class="box box-orange box-dimension2 box-border">
+          height:100px; <br />
+          width: 150px;
+        </div>
+      </div>
+
+      <p>
+        This is the most different setting. In fact in here we are actually
+        saying to each element to not behave automatically, but to grow in
+        proportion to each other in a specific way. <br />
+        By saying to an element to "flex:4" and to another one to "flex:8", you
+        are basically saying to the second one to grow at twice the rate of the
+        other. Each value here is a proportion between the other elements, and
+        the flex-basis is set to 0.
+      </p>
+
+      <hr />
+
+      <h2 id="cinque">Recap and Default Settings for flexbox</h2>
+
+      <p>
+        So in summary of the previous section: by creating a flexbox container
+        and wrapping it around other elements, you can arrange them in a
+        responsive way along a specified direction and even customize their
+        behaviour to some degree.
+      </p>
+
+      <p>
+        Alternatively, without adding anything more than "display: flexbox", you
+        would get a flexbox container with these default values:
+      </p>
+
+      <ol>
+        <li>
+          Items display in a row (the <b>flex-direction</b> property's default
+          is <b>row</b>).
+        </li>
+        <li>
+          The items start from the start edge of the main axis. Which means
+          <b>justify-content: flex-start.</b> <b></b>
+        </li>
+        <li>
+          The items do not stretch on the main direction, but can shrink. This
+          means that the <b>flex-grow</b> property is set to <b>0</b>, while
+          <b>flex-shrink</b> is set to <b>1</b> and items can be squeezed if
+          needed.
+        </li>
+        <li>
+          The <b>flex-basis</b> property is set to <b>auto</b>. This means that
+          the browser will first look if there is any specified size of the
+          elements to arrange them. If there isn't, then it will use the size of
+          the content to choose a size. Overall this means the default is
+          <b>"flex: 0 1 auto;"</b>, which is the same as "flex: initial;".
+        </li>
+        <li>
+          <b>The items will stretch to fill the size of the cross axis</b> (the
+          opposite of the specified direction). This for example means that if
+          an element is bigger than the others, the others will by default
+          stretch to its dimensions. So <b>align-items: stretch;</b> is the
+          default.
+        </li>
+        <li>
+          Same is true for <b>align-content</b> which is set to <b>stretch</b>,
+          giving the elements no spacing by default over multiple lines. This
+          setting is also initially unused since the content is nowrap by
+          default.
+        </li>
+        <li>
+          The <b> flex-wrap </b> property is set to <b>nowrap</b>. So the
+          content will rather squeeze in the main direction, than distribute
+          over multiple lines.
+        </li>
+      </ol>
+
+      <p>
+        Basically then, without any value other than "display:flex", these are
+        the hidden settings that would be applied:
+      </p>
+
+      <div class="code">
+        <p>
+          .default-flex-settings { <br />
+          display: flex; <br />
+          flex-direction: row; <br />
+          justify-content: flex-start; <br />
+          flex: 0 1 auto; <br />
+          align-items: stretch; <br />
+          align-content: stretch; <br />
+          flex-wrap: nowrap; <br />
+          }
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="gradient-separator"><p></p></div>
+
+      <hr />
+      <h1 id="play">Play Around with Flexbox!</h1>
+
+      <p>
+        There is no better way to start understanding these concepts in depth
+        than to start messing around with them. <br />
+        Thankfully there are some very nice resources that will allow you to
+        literally play with flexbox and to understand more visually what you
+        just read!
+      </p>
+      <p>
+        Try these free browser games out and check back here for reference on
+        how some concepts work.
+      </p>
+
+      <ul>
+        <li>
+          <a href="http://flexboxfroggy.com/" target="blank">Flexbox Froggy</a>
+        </li>
+        <li>
+          <a href="http://flexboxdefense.com/" target="blank"
+            >Flexbox Defense</a
+          >
+        </li>
+      </ul>
+
+      <div class="flexCenter">
+        <a href="#top"> <h3>Go Back to Top</h3> </a>
+      </div>
+    </div>
+  </body>
+</html>
