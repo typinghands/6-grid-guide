@@ -1,0 +1,253 @@
+/* Variables */
+
+:root {
+  --grey: rgb(143, 143, 115);
+  --black: #3e554e;
+}
+
+/* Root Tweaks */
+
+html {
+  box-sizing: border-box;
+  font-family: "Open Sans", "Tahoma", sans-serif;
+  color: rgb(27, 27, 27);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}
+
+body {
+  background-color: #f54f29;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23ffd393' stroke-width='0' %3E%3Ccircle fill='%23f54f29' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23f6542b' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23f6582d' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23f75c2f' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23f86132' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23f86534' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23f96a36' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23fa6e38' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23fa723a' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23fb763d' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23fb7b3f' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23fc7f41' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23fd8343' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23fd8746' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23fe8b48' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23fe8f4a' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23ff934d' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23ff974f' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  /* background by SVGBackgrounds.com */
+  margin: 40px auto;
+  max-width: 700px;
+  min-width: 400px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Page wide changes */
+
+hr {
+  margin: 10px;
+  border: 3px var(--grey) solid;
+  border-radius: 10px;
+}
+
+a {
+  color: var(--black);
+}
+
+a:visited {
+  color: rgb(117, 117, 94);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Nunito", "Verdana", sans-serif;
+  margin: 0 0 10px 0;
+  color: var(--black);
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-size: 1.3rem;
+  text-align: start;
+  color: black;
+  margin-top: 30px;
+}
+
+/* Versatile Classes */
+
+.code {
+  background-color: var(--grey);
+  margin: 30px;
+  padding: 50px 80px;
+  font-family: monospace;
+  font-size: 110%;
+  border-radius: 10px;
+  border: 5px var(--black) solid;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.404);
+}
+
+.gradientDivider {
+  background-color: var(--grey);
+  background: linear-gradient(to right, var(--grey) 20%, var(--black) 100%);
+  border-radius: 10px;
+  height: 7px;
+}
+
+.space {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.bigSpace {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.squish {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.gridContainer {
+  display: grid;
+}
+
+.bb {
+  border: #3e554e 2px solid;
+}
+
+.boxA {
+  background-color: #c64c54;
+  border: 2px rgb(143, 54, 60) solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxB {
+  background-color: #fabf50;
+  border: 2px rgb(179, 136, 57) solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxC {
+  background-color: #79b6b8;
+  border: 2px rgb(90, 136, 138) solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxD {
+  background-color: #994d7e;
+  border: 2px rgb(105, 54, 87) solid;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fourFour {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+/* Unique Classes */
+
+.frExample {
+  grid-template-columns: 500px 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+.gridTemplate1 {
+  grid-template: 1fr 3fr / 500px 1fr;
+}
+
+.gapExample {
+  grid-gap: 20px 50px;
+}
+
+.repeatExample {
+  grid-template-columns: repeat(3, 1fr [col]);
+}
+
+.recapGrid1 {
+  display: grid;
+  grid-template: 200px repeat(2, 1fr 2fr) / 20% 40% 100px;
+  grid-gap: 10px;
+}
+
+.gridGapExample {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.gridTemplate {
+  grid-template: 200px 50px / 1fr 1fr 2fr;
+}
+
+.gridAreas {
+  display: grid;
+  grid-template: 1fr 2fr 1fr / 1fr 2fr 1fr;
+  grid-template-areas: "side header header" ". main main" "footer footer footer";
+}
+
+.foot {
+  margin: 150px;
+}
+
+.aHeader {
+  grid-area: header;
+}
+
+.aSide {
+  grid-area: side;
+}
+
+.aMain {
+  grid-area: main;
+}
+
+.aFooter {
+  grid-area: footer;
+}
+
+.placeSelf1 {
+  display: grid;
+  grid-template: repeat(5, 150px) / repeat(5, 150px);
+  grid-gap: 5px;
+}
+
+.g1a {
+  display: grid;
+  grid-gap: 5px;
+  grid-template: repeat(2, 100px) / repeat(2, 100px);
+  border: #3e554e 2px solid;
+}
+
+.g1b {
+  display: grid;
+  grid-gap: 5px;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  border: #3e554e 2px solid;
+}
+
+/* ID's */
